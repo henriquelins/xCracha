@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NE_CRA" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b287a176-7e03-4969-ad75-3b42e64ea877">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="crachasBean"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cliente" class="br.com.crachas.controller.Cliente">
+		<fieldDescription><![CDATA[cliente]]></fieldDescription>
+	</field>
+	<field name="obsevacoes" class="java.lang.String">
+		<fieldDescription><![CDATA[obsevacoes]]></fieldDescription>
+	</field>
+	<field name="dtExpedicao" class="java.sql.Date">
+		<fieldDescription><![CDATA[dtExpedicao]]></fieldDescription>
+	</field>
+	<field name="entrega" class="java.lang.String">
+		<fieldDescription><![CDATA[entrega]]></fieldDescription>
+	</field>
+	<field name="ordemServico" class="br.com.crachas.controller.OrdemServico">
+		<fieldDescription><![CDATA[ordemServico]]></fieldDescription>
+	</field>
+	<field name="totalFinal" class="java.lang.String">
+		<fieldDescription><![CDATA[totalFinal]]></fieldDescription>
+	</field>
+	<variable name="somaTotal" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[Integer.valueOf($F{totalFinal})]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="802" height="26" uuid="65a079c4-5610-4200-8d67-a5756a193daf"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="18" isBold="false"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="21" uuid="90fd44cf-dc67-48d3-a9d5-daebcc39d09b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="70" y="-1" width="200" height="20" uuid="e0db74f7-a779-409a-8a87-719376558955"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="-3" width="70" height="22" uuid="22eb7915-8cdc-4dc0-944a-18496f8e53f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total Final:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="-1" width="80" height="20" uuid="b9eac7f8-5bdb-40a4-aede-fba07340b1f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total Entrada:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="530" y="-2" width="270" height="22" uuid="e5622cd7-fa97-4678-bc08-950137da4e2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Observações:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="-1" width="70" height="20" uuid="25b6f7a9-a903-4303-8b39-82d70337692f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Data Entrada:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="-2" width="60" height="23" uuid="57a2a3ad-fc02-499f-bad6-af1d10568ed5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="306bc396-eac7-45e6-bdbb-6714e1a64c3b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nº da OS:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="70" y="-3" width="200" height="25" uuid="a917aef4-2cbd-44c7-a1d8-51ce87671641">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="659f8204-41cb-4e2f-bbf3-838555702795"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}.getNome()]]></textFieldExpression>
+			</textField>
+			<textField pattern="000">
+				<reportElement x="450" y="-4" width="70" height="26" uuid="832a7ed6-797f-4a36-b58e-82ed227e9f07">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6b0677b-1424-4176-a1b5-813bb8d07f44"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalFinal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="280" y="-3" width="70" height="26" uuid="affdbea0-588a-445b-84c1-a695c642eb2e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="79a4c73e-5424-4d47-9065-d8c84f2c3239"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dtExpedicao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="-3" width="270" height="26" uuid="d739d4f0-ab12-482f-82a0-a25ece695e48">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4f73951-c990-453f-9159-5d866373b7dd"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obsevacoes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="361" y="-3" width="80" height="26" uuid="215321fe-6ea6-4e1a-bf87-baf5f90883a0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6bb5698-e515-40d8-801e-1998c95348ae"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ordemServico}.getTotal()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="60" height="22" uuid="c20b7690-6f7c-4dd6-8e4c-a4bd0d06f749">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="306bc396-eac7-45e6-bdbb-6714e1a64c3b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ordemServico}.getId_os()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

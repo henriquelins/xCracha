@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NE_CRA" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b287a176-7e03-4969-ad75-3b42e64ea877">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[cliente]]></fieldDescription>
+	</field>
+	<field name="obsevacoes" class="java.lang.String">
+		<fieldDescription><![CDATA[obsevacoes]]></fieldDescription>
+	</field>
+	<field name="dtExpedicao" class="java.sql.Date">
+		<fieldDescription><![CDATA[dtExpedicao]]></fieldDescription>
+	</field>
+	<field name="entrega" class="java.lang.String">
+		<fieldDescription><![CDATA[entrega]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="totalFinal" class="java.lang.String">
+		<fieldDescription><![CDATA[totalFinal]]></fieldDescription>
+	</field>
+	<field name="id_os" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id_os]]></fieldDescription>
+	</field>
+	<variable name="somaTotal" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[Integer.valueOf($F{totalFinal})]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="802" height="47" uuid="65a079c4-5610-4200-8d67-a5756a193daf"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="35" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Planilha Recepção]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="4" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="180" height="20" uuid="e0db74f7-a779-409a-8a87-719376558955"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="90" height="20" uuid="22eb7915-8cdc-4dc0-944a-18496f8e53f9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Final]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="80" height="20" uuid="b9eac7f8-5bdb-40a4-aede-fba07340b1f9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entrega]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="530" y="-2" width="270" height="22" uuid="e5622cd7-fa97-4678-bc08-950137da4e2c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observações]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="25b6f7a9-a903-4303-8b39-82d70337692f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dt Expedição]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="-1" width="180" height="26" uuid="a917aef4-2cbd-44c7-a1d8-51ce87671641">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="659f8204-41cb-4e2f-bbf3-838555702795"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="90" height="26" uuid="832a7ed6-797f-4a36-b58e-82ed227e9f07">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6b0677b-1424-4176-a1b5-813bb8d07f44"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalFinal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="200" y="0" width="100" height="26" uuid="affdbea0-588a-445b-84c1-a695c642eb2e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="79a4c73e-5424-4d47-9065-d8c84f2c3239"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dtExpedicao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="0" width="270" height="26" uuid="d739d4f0-ab12-482f-82a0-a25ece695e48">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4f73951-c990-453f-9159-5d866373b7dd"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{obsevacoes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="80" height="26" uuid="215321fe-6ea6-4e1a-bf87-baf5f90883a0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6bb5698-e515-40d8-801e-1998c95348ae"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entrega}.toUpperCase()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="4" width="140" height="26" uuid="8fa67aed-7bed-4490-91cc-fd477b92fa7b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Registos por pág. - " + $V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="0" width="100" height="30" uuid="204b3d7b-4c29-4568-a394-63952f141975"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág. "+ $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="4" width="110" height="26" uuid="000b72f0-1326-460a-bea4-28d56e95b0f5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total - " + $V{somaTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="279" y="4" width="270" height="26" uuid="3d25d3bc-e611-4007-a6a4-5dbd73bccb21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totais finais apenas na última página]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
