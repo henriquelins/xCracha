@@ -96,7 +96,6 @@ public class TelaOrdemServico extends JDialog {
 	private JLabel lblOS;
 	private static OrdemServico os;
 	private JButton btnImprimirOS;
-	
 
 	/**
 	 * Launch the application.
@@ -117,11 +116,12 @@ public class TelaOrdemServico extends JDialog {
 	 * Create the dialog.
 	 */
 	public TelaOrdemServico() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaOrdemServico.class.getResource("/br/com/crachas/image/ne.png")));
-		
+		setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(TelaOrdemServico.class.getResource("/br/com/crachas/image/ne.png")));
+
 		listOS = new ArrayList<>();
 		listaComprovanteEntrega = new ArrayList<>();
-		
+
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		setModal(true);
 		setResizable(false);
@@ -336,7 +336,7 @@ public class TelaOrdemServico extends JDialog {
 				@Override
 				public void keyTyped(KeyEvent ev) {
 
-					String caracteres = "0987654321,.-+";
+					String caracteres = "0987654321";
 
 					if (!caracteres.contains(ev.getKeyChar() + "")) {
 
@@ -347,14 +347,14 @@ public class TelaOrdemServico extends JDialog {
 				}
 
 			});
-			
+
 			tfTotalExpedido.setDocument(TamanhoMax);
 
 			JLabel lblMotivo = new JLabel("Observa\u00E7\u00F5es");
 			lblMotivo.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 			lblMotivo.setBounds(293, 49, 181, 21);
 			pOS.add(lblMotivo);
-			
+
 			{
 
 				JScrollPane spDetalhesLayout = new JScrollPane();
@@ -384,162 +384,601 @@ public class TelaOrdemServico extends JDialog {
 				tpMotivo.setEditable(false);
 				spMotivo.setViewportView(tpMotivo);
 				tpMotivo.setBorder(new LineBorder(Color.LIGHT_GRAY));
-						
-			JLabel lblOSLogo = new JLabel("");
-			lblOSLogo.setHorizontalAlignment(SwingConstants.CENTER);
-			lblOSLogo.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/icone-servicos-oito.png")));
-			lblOSLogo.setBounds(476, 282, 118, 89);
-			pOS.add(lblOSLogo);
 
-			lblEntrega = new JLabel("Entrega");
-			lblEntrega.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-			lblEntrega.setBounds(18, 141, 46, 14);
-			pOS.add(lblEntrega);
+				JLabel lblOSLogo = new JLabel("");
+				lblOSLogo.setHorizontalAlignment(SwingConstants.CENTER);
+				lblOSLogo.setIcon(new ImageIcon(
+						TelaOrdemServico.class.getResource("/br/com/crachas/image/icone-servicos-oito.png")));
+				lblOSLogo.setBounds(476, 282, 118, 89);
+				pOS.add(lblOSLogo);
 
-			cbEntrega = new JComboBox<String>();
-			cbEntrega.setVisible(false);
-			cbEntrega.setAutoscrolls(true);
-			cbEntrega.setForeground(Color.BLACK);
-			cbEntrega.setModel(new DefaultComboBoxModel<String>(new String[] { "SELECIONE...", "SIM", "N\u00C3O" }));
-			cbEntrega.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-			cbEntrega.setBounds(18, 160, 114, 20);
-			pOS.add(cbEntrega);
+				lblEntrega = new JLabel("Entrega");
+				lblEntrega.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+				lblEntrega.setBounds(18, 141, 46, 14);
+				pOS.add(lblEntrega);
 
-			tfEntrega = new JTextField();
-			tfEntrega.setForeground(Color.BLACK);
-			tfEntrega.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-			tfEntrega.setEditable(false);
-			tfEntrega.setColumns(10);
-			tfEntrega.setBorder(new LineBorder(Color.LIGHT_GRAY));
-			tfEntrega.setBackground(Color.WHITE);
-			tfEntrega.setBounds(18, 160, 115, 20);
-			pOS.add(tfEntrega);
+				cbEntrega = new JComboBox<String>();
+				cbEntrega.setVisible(false);
+				cbEntrega.setAutoscrolls(true);
+				cbEntrega.setForeground(Color.BLACK);
+				cbEntrega
+						.setModel(new DefaultComboBoxModel<String>(new String[] { "SELECIONE...", "SIM", "N\u00C3O" }));
+				cbEntrega.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+				cbEntrega.setBounds(18, 160, 114, 20);
+				pOS.add(cbEntrega);
 
-			lblOS = new JLabel("");
-			lblOS.setForeground(Color.BLACK);
-			lblOS.setBounds(25, 0, 562, 52);
-			pOS.add(lblOS);
-			lblOS.setHorizontalAlignment(SwingConstants.CENTER);
-			lblOS.setFont(new Font("Segoe UI", Font.BOLD, 18));
+				tfEntrega = new JTextField();
+				tfEntrega.setForeground(Color.BLACK);
+				tfEntrega.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+				tfEntrega.setEditable(false);
+				tfEntrega.setColumns(10);
+				tfEntrega.setBorder(new LineBorder(Color.LIGHT_GRAY));
+				tfEntrega.setBackground(Color.WHITE);
+				tfEntrega.setBounds(18, 160, 115, 20);
+				pOS.add(tfEntrega);
 
-			cbUnidade = new JComboBox<String>();
-			cbUnidade.setVisible(false);
-			cbUnidade.setForeground(Color.BLACK);
-			cbUnidade.setModel(new DefaultComboBoxModel<String>(new String[] { "SELECIONE...", "PE", "JP" }));
-			cbUnidade.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-			cbUnidade.setAutoscrolls(true);
-			cbUnidade.setBounds(152, 160, 122, 20);
-			pOS.add(cbUnidade);
+				lblOS = new JLabel("");
+				lblOS.setForeground(Color.BLACK);
+				lblOS.setBounds(25, 0, 562, 52);
+				pOS.add(lblOS);
+				lblOS.setHorizontalAlignment(SwingConstants.CENTER);
+				lblOS.setFont(new Font("Segoe UI", Font.BOLD, 18));
 
-			tfUnidade = new JTextField();
-			tfUnidade.setForeground(Color.BLACK);
-			tfUnidade.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-			tfUnidade.setEditable(false);
-			tfUnidade.setColumns(10);
-			tfUnidade.setBorder(new LineBorder(Color.LIGHT_GRAY));
-			tfUnidade.setBackground(Color.WHITE);
-			tfUnidade.setBounds(152, 160, 122, 20);
-			pOS.add(tfUnidade);
+				cbUnidade = new JComboBox<String>();
+				cbUnidade.setVisible(false);
+				cbUnidade.setForeground(Color.BLACK);
+				cbUnidade.setModel(new DefaultComboBoxModel<String>(new String[] { "SELECIONE...", "PE", "JP" }));
+				cbUnidade.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+				cbUnidade.setAutoscrolls(true);
+				cbUnidade.setBounds(152, 160, 122, 20);
+				pOS.add(cbUnidade);
 
-			JLabel Unidade = new JLabel("Unidade");
-			Unidade.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-			Unidade.setBounds(150, 141, 46, 14);
-			pOS.add(Unidade);
+				tfUnidade = new JTextField();
+				tfUnidade.setForeground(Color.BLACK);
+				tfUnidade.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+				tfUnidade.setEditable(false);
+				tfUnidade.setColumns(10);
+				tfUnidade.setBorder(new LineBorder(Color.LIGHT_GRAY));
+				tfUnidade.setBackground(Color.WHITE);
+				tfUnidade.setBounds(152, 160, 122, 20);
+				pOS.add(tfUnidade);
 
-			dtRecebimento = new JTextField();
-			dtRecebimento.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-			dtRecebimento.setBounds(92, 70, 86, 20);
-			pOS.add(dtRecebimento);
-			dtRecebimento.setColumns(10);
+				JLabel Unidade = new JLabel("Unidade");
+				Unidade.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+				Unidade.setBounds(150, 141, 46, 14);
+				pOS.add(Unidade);
 
-			dtPrevista = new JTextField();
-			dtPrevista.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-			dtPrevista.setColumns(10);
-			dtPrevista.setBounds(190, 70, 86, 20);
-			pOS.add(dtPrevista);
-			
-			btnImprimirOS = new JButton("Imprimir OS");
-			btnImprimirOS.setVisible(false);
-			btnImprimirOS.addActionListener(new ActionListener() {
+				dtRecebimento = new JTextField();
+				dtRecebimento.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+				dtRecebimento.setBounds(92, 70, 86, 20);
+				pOS.add(dtRecebimento);
+				dtRecebimento.setColumns(10);
+
+				dtPrevista = new JTextField();
+				dtPrevista.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+				dtPrevista.setColumns(10);
+				dtPrevista.setBounds(190, 70, 86, 20);
+				pOS.add(dtPrevista);
+
+				btnImprimirOS = new JButton("Imprimir OS");
+				btnImprimirOS.setVisible(false);
+				btnImprimirOS.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+
+						listaComprovanteEntrega.clear();
+
+						DateFormat formatBR = new SimpleDateFormat("dd/MM/YYYY");
+
+						Relatorio relatorio = new Relatorio();
+
+						ComprovanteDeEntrega comprovanteDeEntrega = new ComprovanteDeEntrega();
+
+						comprovanteDeEntrega.setIdOs(tfOS.getText());
+						comprovanteDeEntrega.setDataDeRecebimento(dtRecebimento.getText());
+						comprovanteDeEntrega.setTotalFinalDoPedido(tfTotalExpedido.getText());
+						comprovanteDeEntrega.setEntragamos(tfEntrega.getText());
+						comprovanteDeEntrega.setUnidade(tfUnidade.getText());
+						comprovanteDeEntrega.setCliente(tfClienteOS.getText());
+						comprovanteDeEntrega
+								.setContatoEmailFone(tfContatoOS.getText() + " " + tfEmailOS.getText().toLowerCase()
+										+ " " + tfFone1OS.getText() + " / " + tfFone2OS.getText());
+						comprovanteDeEntrega.setVendedor(tfVendedorOS.getText());
+						comprovanteDeEntrega.setObservaçõesDoPedido(tpMotivo.getText());
+						comprovanteDeEntrega.setDetalhesdoLayout(tpDetalhesOS.getText());
+
+						EstadoOS estadoOS = new EstadoOS();
+						EstadoOSRN estadoOSRN = new EstadoOSRN();
+						int estagio = estadoOSRN.buscarEstagio(Integer.valueOf(tfOS.getText()));
+						Date dataDoEstagio = estadoOSRN.buscarDataDoEstagio(Integer.valueOf(tfOS.getText()), estagio);
+
+						comprovanteDeEntrega.setDataExpedição(formatBR.format(dataDoEstagio.getTime()));
+
+						comprovanteDeEntrega.setPortador(TelaLogin.getOperador().getNome().toUpperCase());
+
+						listaComprovanteEntrega.add(comprovanteDeEntrega);
+						listaComprovanteEntrega.add(comprovanteDeEntrega);
+
+						if (listaComprovanteEntrega == null || listaComprovanteEntrega.isEmpty() == true) {
+
+							JOptionPane.showMessageDialog(null, "Erro, lista vazia!", "Comprovante de Entrega",
+									JOptionPane.INFORMATION_MESSAGE);
+
+						} else {
+
+							relatorio.gerarComprovanteDeEntrega();
+
+						}
+
+					}
+				});
+				btnImprimirOS.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+				btnImprimirOS.setBounds(484, 395, 110, 26);
+				pOS.add(btnImprimirOS);
+			}
+
+			btnIniciar = new JButton("Iniciar");
+			btnIniciar.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/iniciar.png")));
+			btnIniciar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+
+			btnIniciar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
-					listaComprovanteEntrega.clear();
-					
-					DateFormat formatBR = new SimpleDateFormat("dd/MM/YYYY");
-					
-					Relatorio relatorio = new Relatorio();
-								
-					ComprovanteDeEntrega comprovanteDeEntrega = new ComprovanteDeEntrega();
-					
-					comprovanteDeEntrega.setIdOs(tfOS.getText());
-					comprovanteDeEntrega.setDataDeRecebimento(dtRecebimento.getText());
-					comprovanteDeEntrega.setTotalFinalDoPedido(tfTotalExpedido.getText());
-					comprovanteDeEntrega.setEntragamos(tfEntrega.getText());
-					comprovanteDeEntrega.setUnidade(tfUnidade.getText());
-					comprovanteDeEntrega.setCliente(tfClienteOS.getText());
-					comprovanteDeEntrega.setContatoEmailFone(tfContatoOS.getText() + " " + tfEmailOS.getText().toLowerCase() + " " + tfFone1OS.getText() + " / " + tfFone2OS.getText() );
-					comprovanteDeEntrega.setVendedor(tfVendedorOS.getText());
-					comprovanteDeEntrega.setObservaçõesDoPedido(tpMotivo.getText());
-					comprovanteDeEntrega.setDetalhesdoLayout(tpDetalhesOS.getText());
-					
-					EstadoOS estadoOS = new EstadoOS();
-					EstadoOSRN estadoOSRN = new EstadoOSRN();
-					int estagio = estadoOSRN.buscarEstagio(Integer.valueOf(tfOS.getText()));
-					Date dataDoEstagio = estadoOSRN.buscarDataDoEstagio(Integer.valueOf(tfOS.getText()), estagio);
-					
-					comprovanteDeEntrega.setDataExpedição(formatBR.format(dataDoEstagio.getTime()));
-					
-					comprovanteDeEntrega.setPortador(TelaLogin.getOperador().getNome().toUpperCase());
+
+					OrdemServicoRN osRN = new OrdemServicoRN();
+
+					int resposta = JOptionPane.showConfirmDialog(null, "Deseja avançar a " + tfMensagem.getText() + "?",
+							"Estágio da Produção", JOptionPane.OK_CANCEL_OPTION);
+
+					if (resposta == JOptionPane.OK_OPTION) {
+
+						int id_os = Integer.valueOf(tfOS.getText());
+
+						estagio = estadoOSRN.buscarEstagio(id_os);
+
+						if (estagio == 1) {
+
+							int proximoEstado = 0;
+
+							Date hoje = new Date(System.currentTimeMillis());
+							Time hora = new Time(System.currentTimeMillis());
+
+							estadoOS.setId_os(id_os);
+							estadoOS.setEstagio(proximoEstado);
+							estadoOS.setDataInicial(hoje);
+							estadoOS.setHoraInicial(hora);
+							estadoOS.setOperador(String.valueOf(TelaLogin.getOperador().getNome()));
+
+							estadoOSRN.criarEstadoOS(estadoOS);
+
+							estagio = estadoOSRN.buscarEstagio(id_os);
+
+							if (TelaLogin.getOperador().getSetor().equalsIgnoreCase("CRACHÁS / IMPRESSÃO")) {
+
+								mudançaEstagiosOperadorImpressao(estagio);
+
+							}
+
+							String mensagem = String.valueOf(estagio);
+
+							mensagem = estagioOS(mensagem);
+
+							tfMensagem.setText(mensagem);
+
+							osRN.atualizarStatus(id_os, mensagem);
+
+						} else if (estagio == 2 && tfTotalExpedido.getText().equals("")) {
+
+							JOptionPane.showMessageDialog(null,
+									"Preencha primeiro o Total Expedido\n e/ou a observação!");
+
+							btnTotalExpedido.setEnabled(false);
+							btnEditarOS.setEnabled(false);
+							btnIniciar.setEnabled(false);
+
+							tfTotalExpedido.setEditable(true);
+							tpMotivo.setEditable(true);
+
+							btnSalvar.setVisible(true);
+							btnCancelar.setVisible(true);
+
+						} else if (estagio == 3) {
+
+							br.com.crachas.controller.IniciarAplicativoCrachas.email.getEmail();
+
+							int resposta2 = JOptionPane.showConfirmDialog(null,
+									"Deseja enviar um e-mail de pedido pronto?", "Pedido pronto",
+									JOptionPane.YES_NO_OPTION);
+
+							if (resposta2 == JOptionPane.YES_OPTION) {
+
+								Email email = new Email();
+
+								Cliente cliente = new Cliente();
+								ClienteRN clienteRN = new ClienteRN();
+
+								setOs(osRN.mostrarOS(id_os));
+
+								cliente = clienteRN.mostrarCliente(getOs().getId_cliente());
+
+								try {
+
+									try {
 										
-					listaComprovanteEntrega.add(comprovanteDeEntrega);
-					listaComprovanteEntrega.add(comprovanteDeEntrega);
+										email.pedidoPronto(cliente, getOs());
 										
-					if (listaComprovanteEntrega == null || listaComprovanteEntrega.isEmpty() == true) {
-						
-						JOptionPane.showMessageDialog(null, "Erro, lista vazia!", "Comprovante de Entrega", JOptionPane.INFORMATION_MESSAGE);
-						
+									} catch (FileNotFoundException e) {
+										
+										e.printStackTrace();
+									}
+
+								} catch (EmailException e1) {
+
+									JOptionPane.showMessageDialog(null,
+											"O e-mail não foi enviado! \n" + e1.getMessage());
+
+									try {
+										
+										email.avisoEmailNãoEnviado(cliente, e1);
+										
+									} catch (EmailException e2) {
+										
+										e2.printStackTrace();
+									}
+								}
+							}
+
+						}
+
 					} else {
 						
-						relatorio.gerarComprovanteDeEntrega();
+						//
 						
 					}
-					
+
 				}
+
 			});
-			btnImprimirOS.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-			btnImprimirOS.setBounds(484, 395, 110, 26);
-			pOS.add(btnImprimirOS);
-		}
+			btnIniciar.setBorder(null);
+			btnIniciar.setBounds(263, 465, 115, 35);
 
-		btnIniciar = new JButton("Iniciar");
-		btnIniciar.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/iniciar.png")));
-		btnIniciar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+			getContentPane().add(btnIniciar);
 
-		btnIniciar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-				OrdemServicoRN osRN = new OrdemServicoRN();
-				
-				int resposta = JOptionPane.showConfirmDialog(null, "Deseja avançar a " + tfMensagem.getText() + "?",
-						"Estágio da Produção", JOptionPane.OK_CANCEL_OPTION);
+			tfMensagem = new JTextField();
+			tfMensagem.setBackground(Color.WHITE);
+			tfMensagem.setHorizontalAlignment(SwingConstants.CENTER);
+			tfMensagem.setForeground(Color.BLUE);
+			tfMensagem.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+			tfMensagem.setEnabled(false);
+			tfMensagem.setDisabledTextColor(Color.BLUE);
+			tfMensagem.setColumns(10);
+			tfMensagem.setBorder(new LineBorder(Color.LIGHT_GRAY));
+			tfMensagem.setBounds(15, 510, 611, 35);
+			getContentPane().add(tfMensagem);
 
-				if (resposta == JOptionPane.OK_OPTION) {
+			lblLogado = new JLabel("");
+			lblLogado.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+			lblLogado.setBounds(15, 566, 370, 23);
 
-					int id_os = Integer.valueOf(tfOS.getText());
+			lblLogado.setText(
+					"Logado: " + TelaLogin.getOperador().getNome() + " / " + TelaLogin.getOperador().getSetor());
 
-					estagio = estadoOSRN.buscarEstagio(id_os);
+			getContentPane().add(lblLogado);
 
-					if (estagio == 0) {
+			btnCancelar = new JButton("Cancelar");
+			btnCancelar.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/excluir.png")));
+			btnCancelar.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+			btnCancelar.setVisible(false);
+			btnCancelar.setBorder(null);
+			btnCancelar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
 
-						estagio = 1;
+					tfTotalExpedido.setEditable(false);
+					tpMotivo.setEditable(false);
+
+					btnSalvar.setVisible(false);
+					btnCancelar.setVisible(false);
+
+					btnTotalExpedido.setEnabled(true);
+					btnEditarOS.setEnabled(true);
+
+					if (TelaLogin.getOperador().getSetor().equals("COMERCIAL")
+							|| TelaLogin.getOperador().getSetor().equals("ADMINISTRATIVO")) {
+
+						btnIniciar.setVisible(false);
+
+					} else {
+
+						btnIniciar.setVisible(true);
 
 					}
 
-					if (estagio == 2 && tfTotalExpedido.getText().equals("")) {
+					tfClienteOS.setEditable(false);
+					tfVendedorOS.setEditable(false);
+					tfContatoOS.setEditable(false);
+					tfEmailOS.setEditable(false);
+					tfFone1OS.setEditable(false);
+					tfFone2OS.setEditable(false);
+					tpDetalhesOS.setEditable(false);
 
-						JOptionPane.showMessageDialog(null, "Preencha primeiro o Total Expedido\n e/ou a observação!");
+					cbEntrega.setVisible(false);
+					tfEntrega.setVisible(true);
+
+					tfTotalExpedido.setText("");
+
+				}
+			});
+			btnCancelar.setBounds(511, 465, 115, 35);
+			getContentPane().add(btnCancelar);
+
+			btnSalvar = new JButton("Salvar");
+			btnSalvar.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/salvar.png")));
+			btnSalvar.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+			btnSalvar.setVisible(false);
+			btnSalvar.setBorder(null);
+			btnSalvar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+
+					if (tfTotalExpedido.isEditable() == true) {
+
+						if (tfTotalExpedido.getText().equals("")) {
+
+							JOptionPane.showMessageDialog(null, "Para salvar preencha o total expedido!");
+
+						} else {
+
+							int resposta = JOptionPane.showConfirmDialog(null,
+									"Deseja salvar o total expedido e/ou a observação?", "Total Expedido",
+									JOptionPane.OK_CANCEL_OPTION);
+
+							if (resposta == JOptionPane.OK_OPTION) {
+
+								OrdemServico os = new OrdemServico();
+								OrdemServicoRN osRN = new OrdemServicoRN();
+
+								NumberFormat tresDigitos = new DecimalFormat("000");
+
+								if (tfTotalExpedido.getText() != null) {
+
+									osRN.atualizarTotalFinal(Integer.valueOf(tfOS.getText()),
+											tresDigitos.format(Integer.parseInt(tfTotalExpedido.getText())),
+											tpMotivo.getText().toUpperCase());
+
+								} else {
+
+									osRN.atualizarTotalFinal(Integer.valueOf(tfOS.getText()), tfTotalExpedido.getText(),
+											tpMotivo.getText().toUpperCase());
+
+								}
+
+								tfTotalExpedido.setText(tresDigitos.format(Integer.valueOf(tfTotalExpedido.getText())));
+
+								btnTotalExpedido.setEnabled(true);
+								btnEditarOS.setEnabled(true);
+
+								btnIniciar.setEnabled(true);
+
+								btnSalvar.setVisible(false);
+								btnCancelar.setVisible(false);
+
+								tfTotalExpedido.setEditable(false);
+								tpMotivo.setEditable(false);
+
+								int id_os = Integer.valueOf(tfOS.getText());
+
+								estagio = estadoOSRN.buscarEstagio(id_os);
+
+								if (estagio == 2) {
+
+									JOptionPane.showMessageDialog(null,
+											"Lembre-se de apertar novamente \no botão Laminação!");
+								}
+
+							}
+
+						}
+
+					} else {
+
+						if (cbEntrega.getSelectedItem().equals("Selecione...")) {
+
+							JOptionPane.showMessageDialog(null, "Selecione se nosso portador fará a entrega!");
+
+						} else if (cbUnidade.getSelectedItem().equals("Selecione...")) {
+
+							JOptionPane.showMessageDialog(null, "Selecione a unidade da empresa!");
+
+						} else {
+
+							OrdemServico os = new OrdemServico();
+							OrdemServicoRN osRN = new OrdemServicoRN();
+
+							ClienteRN clienteRN = new ClienteRN();
+							Cliente cliente = new Cliente();
+
+							os = osRN.mostrarOS(Integer.valueOf(tfOS.getText()));
+
+							boolean entrega = false;
+
+							if (cbEntrega.getSelectedItem().equals("Sim")) {
+
+								entrega = true;
+
+							} else {
+
+								entrega = false;
+
+							}
+
+							cliente.setId_cliente(os.getId_cliente());
+							cliente.setNome(tfClienteOS.getText().toUpperCase());
+							cliente.setVendedor(tfVendedorOS.getText().toUpperCase());
+							cliente.setContato(tfContatoOS.getText().toUpperCase());
+							cliente.setEmail(tfEmailOS.getText().toLowerCase());
+							cliente.setFone1(tfFone1OS.getText());
+							cliente.setFone2(tfFone2OS.getText());
+							cliente.setDetalhes(tpDetalhesOS.getText());
+							cliente.setEntrega(entrega);
+							cliente.setUnidade(String.valueOf(cbUnidade.getSelectedItem()));
+
+							clienteRN.editarcliente(cliente);
+
+							tfTotalExpedido.setEditable(false);
+							tpMotivo.setEditable(false);
+
+							btnSalvar.setVisible(false);
+							btnCancelar.setVisible(false);
+
+							btnEditarOS.setEnabled(true);
+
+							if (TelaLogin.getOperador().getSetor().equals("COMERCIAL")
+									|| TelaLogin.getOperador().getSetor().equals("ADMINISTRATIVO")) {
+
+								btnIniciar.setVisible(false);
+
+							} else {
+
+								btnIniciar.setVisible(true);
+
+							}
+
+							btnTotalExpedido.setEnabled(true);
+
+							tfClienteOS.setEditable(false);
+							tfVendedorOS.setEditable(false);
+							tfContatoOS.setEditable(false);
+							tfEmailOS.setEditable(false);
+							tfFone1OS.setEditable(false);
+							tfFone2OS.setEditable(false);
+							tpDetalhesOS.setEditable(false);
+
+							cbEntrega.setVisible(false);
+							tfEntrega.setVisible(true);
+
+							cbUnidade.setVisible(false);
+							tfUnidade.setVisible(true);
+
+							cliente = clienteRN.mostrarCliente(os.getId_cliente());
+
+							String portador = "";
+
+							if (cliente.isEntrega() == true) {
+
+								portador = "Sim";
+
+							} else {
+
+								portador = "Não";
+
+							}
+
+							tfClienteOS.setText(cliente.getNome());
+							tfVendedorOS.setText(String.valueOf(cliente.getVendedor()));
+							tfContatoOS.setText(cliente.getContato());
+							tfEmailOS.setText(cliente.getEmail());
+							tfFone1OS.setText(cliente.getFone1());
+							tfFone2OS.setText(cliente.getFone2());
+							tpDetalhesOS.setText(cliente.getDetalhes());
+							tfEntrega.setText(portador);
+							tfUnidade.setText(cliente.getUnidade());
+
+							Producao producao = new Producao();
+							ProducaoRN producaoRN = new ProducaoRN();
+
+							producao = producaoRN.pesquisarIDOS(os.getId_os());
+
+							producao.setEmpresa(cliente.getNome());
+							producao.setObservacoes(os.getMotivo());
+
+							producaoRN.atualizarProducao(producao);
+
+						}
+
+					}
+
+				}
+			});
+			btnSalvar.setBounds(387, 465, 115, 35);
+			getContentPane().add(btnSalvar);
+			btnTotalExpedido = new JButton("Total  e Obs");
+			btnTotalExpedido
+					.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/status.png")));
+			btnTotalExpedido.setBounds(15, 465, 115, 35);
+			getContentPane().add(btnTotalExpedido);
+			btnTotalExpedido.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+			btnTotalExpedido.setBorder(null);
+
+			btnEditarOS = new JButton("Editar OS");
+			btnEditarOS.setBounds(139, 465, 115, 35);
+			getContentPane().add(btnEditarOS);
+			btnEditarOS
+					.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/editar_os.png")));
+			btnEditarOS.setBorder(null);
+
+			JButton btnImprimir = new JButton("Imprimir");
+			btnImprimir
+					.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/imprimir.png")));
+			btnImprimir.setBounds(395, 555, 108, 35);
+			getContentPane().add(btnImprimir);
+			btnImprimir.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+
+					ImpressaoJpanel imp = new ImpressaoJpanel(pOS);
+
+					PrinterJob job = PrinterJob.getPrinterJob();
+					job.setJobName(" Imprimindo Ordem de Serviço ");
+					job.setPrintable(imp);
+					boolean ok = job.printDialog();
+					if (ok) {
+						try {
+							job.print();
+						} catch (PrinterException ex) {
+							/* The job did not successfully complete */
+							JOptionPane.showMessageDialog(null, "Falha na impressão do documento!");
+						}
+
+					}
+				}
+
+			});
+			btnEditarOS.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+
+					int resposta = JOptionPane.showConfirmDialog(null, "Você deseja editar a OS?", "Editar OS",
+							JOptionPane.OK_CANCEL_OPTION);
+
+					if (resposta == JOptionPane.OK_OPTION) {
+
+						btnSalvar.setVisible(true);
+						btnCancelar.setVisible(true);
+
+						tfClienteOS.setEditable(true);
+						tfVendedorOS.setEditable(true);
+						tfContatoOS.setEditable(true);
+						tfEmailOS.setEditable(true);
+						tfFone1OS.setEditable(true);
+						tfFone2OS.setEditable(true);
+						tpDetalhesOS.setEditable(true);
+
+						cbEntrega.setVisible(true);
+						cbUnidade.setVisible(true);
+						tfEntrega.setVisible(false);
+						tfUnidade.setVisible(false);
+
+						btnTotalExpedido.setEnabled(false);
+						btnEditarOS.setEnabled(false);
+						btnIniciar.setEnabled(false);
+
+					}
+
+				}
+			});
+			btnTotalExpedido.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+
+					int resposta = JOptionPane.showConfirmDialog(null,
+							"Você deseja inserir o total expedido e/ou a observação?", "Total Expedido",
+							JOptionPane.OK_CANCEL_OPTION);
+
+					if (resposta == JOptionPane.OK_OPTION) {
 
 						btnTotalExpedido.setEnabled(false);
 						btnEditarOS.setEnabled(false);
@@ -551,465 +990,11 @@ public class TelaOrdemServico extends JDialog {
 						btnSalvar.setVisible(true);
 						btnCancelar.setVisible(true);
 
-					} else if (estagio <= 2) {
-
-						int proximoEstado = 0;
-						
-						if(estagio == 3) {
-														
-							proximoEstado = Integer.valueOf(estagio) + 2;
-						
-						} else {
-							
-							proximoEstado = Integer.valueOf(estagio) + 1;
-						}
-
-						Date hoje = new Date(System.currentTimeMillis());
-						Time hora = new Time(System.currentTimeMillis());
- 
-						estadoOS.setId_os(id_os);
-						estadoOS.setEstagio(proximoEstado);
-						estadoOS.setDataInicial(hoje);
-						estadoOS.setHoraInicial(hora);
-						estadoOS.setOperador(String.valueOf(TelaLogin.getOperador().getNome()));
-
-						estadoOSRN.criarEstadoOS(estadoOS);
-
-						estagio = estadoOSRN.buscarEstagio(id_os);
-					
-
-						if (TelaLogin.getOperador().getSetor().equalsIgnoreCase("CRACHÁS / IMPRESSÃO")) {
-
-							mudançaEstagiosOperadorImpressao(estagio);
-
-						} else if (TelaLogin.getOperador().getSetor().equalsIgnoreCase("CRACHÁS / LAMINAÇÃO")) {
-
-							mudançaEstagiosOperadorLaminacao(estagio);
-
-						} else if (TelaLogin.getOperador().getAcesso().equalsIgnoreCase("OBSERVADOR")) {
-
-							mudançaEstagiosObservador(estagio);
-
-						} else if (TelaLogin.getOperador().getSetor().equalsIgnoreCase("RECEPÇÃO")) {
-
-							mudançaEstagiosRecepcionista(estagio);
-
-						}
-
-						String mensagem = String.valueOf(estagio);
-
-						mensagem = estagioOS(mensagem);
-
-						tfMensagem.setText(mensagem);
-
-						osRN.atualizarStatus(id_os, mensagem);
-												
-						
-					} if (estagio == 3) {
-						
-						br.com.crachas.controller.IniciarAplicativoCrachas.email.getEmail();
-
-						int resposta2 = JOptionPane.showConfirmDialog(null,
-								"Deseja enviar um e-mail de pedido pronto?", "Pedido pronto",
-								JOptionPane.YES_NO_OPTION);
-
-						if (resposta2 == JOptionPane.YES_OPTION) {
-
-							Email email = new Email();
-							
-							Cliente cliente = new Cliente();
-							ClienteRN clienteRN = new ClienteRN();
-							
-							setOs(osRN.mostrarOS(id_os));
-							
-							cliente = clienteRN.mostrarCliente(getOs().getId_cliente());
-													
-
-							try {
-
-								try {
-									email.pedidoPronto(cliente, getOs());
-								} catch (FileNotFoundException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-
-							} catch (EmailException e1) {
-
-								JOptionPane.showMessageDialog(null,
-										"O e-mail não foi enviado! \n" + e1.getMessage());
-
-								try {
-									email.avisoEmailNãoEnviado(cliente, e1);
-								} catch (EmailException e2) {
-									// TODO Auto-generated catch block
-									e2.printStackTrace();
-								}
-							}
-						} 
-						
-					} 
-
-				}
-
-			}
-
-		});
-		btnIniciar.setBorder(null);
-		btnIniciar.setBounds(263, 465, 115, 35);
-
-		getContentPane().add(btnIniciar);
-
-		tfMensagem = new JTextField();
-		tfMensagem.setBackground(Color.WHITE);
-		tfMensagem.setHorizontalAlignment(SwingConstants.CENTER);
-		tfMensagem.setForeground(Color.BLUE);
-		tfMensagem.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-		tfMensagem.setEnabled(false);
-		tfMensagem.setDisabledTextColor(Color.BLUE);
-		tfMensagem.setColumns(10);
-		tfMensagem.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		tfMensagem.setBounds(15, 510, 611, 35);
-		getContentPane().add(tfMensagem);
-
-		lblLogado = new JLabel("");
-		lblLogado.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		lblLogado.setBounds(15, 566, 370, 23);
-
-		lblLogado.setText("Logado: " + TelaLogin.getOperador().getNome() + " / " + TelaLogin.getOperador().getSetor());
-
-		getContentPane().add(lblLogado);
-
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/excluir.png")));
-		btnCancelar.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		btnCancelar.setVisible(false);
-		btnCancelar.setBorder(null);
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				tfTotalExpedido.setEditable(false);
-				tpMotivo.setEditable(false);
-
-				btnSalvar.setVisible(false);
-				btnCancelar.setVisible(false);
-
-				btnTotalExpedido.setEnabled(true);
-				btnEditarOS.setEnabled(true);
-
-				if (TelaLogin.getOperador().getSetor().equals("COMERCIAL")
-						|| TelaLogin.getOperador().getSetor().equals("ADMINISTRATIVO")) {
-
-					btnIniciar.setVisible(false);
-
-				} else {
-
-					btnIniciar.setVisible(true);
-
-				}
-
-				tfClienteOS.setEditable(false);
-				tfVendedorOS.setEditable(false);
-				tfContatoOS.setEditable(false);
-				tfEmailOS.setEditable(false);
-				tfFone1OS.setEditable(false);
-				tfFone2OS.setEditable(false);
-				tpDetalhesOS.setEditable(false);
-
-				cbEntrega.setVisible(false);
-				tfEntrega.setVisible(true);
-
-				tfTotalExpedido.setText("");
-
-			}
-		});
-		btnCancelar.setBounds(511, 465, 115, 35);
-		getContentPane().add(btnCancelar);
-
-		btnSalvar = new JButton("Salvar");
-		btnSalvar.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/salvar.png")));
-		btnSalvar.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		btnSalvar.setVisible(false);
-		btnSalvar.setBorder(null);
-		btnSalvar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				if (tfTotalExpedido.isEditable() == true) {
-
-					if (tfTotalExpedido.getText().equals("")) {
-
-						JOptionPane.showMessageDialog(null, "Para salvar preencha o total expedido!");
-
-					} else {
-
-						int resposta = JOptionPane.showConfirmDialog(null,
-								"Deseja salvar o total expedido e/ou a observação?", "Total Expedido",
-								JOptionPane.OK_CANCEL_OPTION);
-
-						if (resposta == JOptionPane.OK_OPTION) {
-
-							OrdemServico os = new OrdemServico();
-							OrdemServicoRN osRN = new OrdemServicoRN();
-							
-							NumberFormat tresDigitos = new DecimalFormat("000");
-							
-							if (tfTotalExpedido.getText() != null) {
-								
-								osRN.atualizarTotalFinal(Integer.valueOf(tfOS.getText()), tresDigitos.format(Integer.parseInt( tfTotalExpedido.getText())),
-										tpMotivo.getText().toUpperCase());
-								
-							} else {
-								
-								osRN.atualizarTotalFinal(Integer.valueOf(tfOS.getText()), tfTotalExpedido.getText(),
-										tpMotivo.getText().toUpperCase());
-								
-								
-							}
-							
-							tfTotalExpedido.setText(tresDigitos.format(Integer.valueOf(tfTotalExpedido.getText())));
-							
-							btnTotalExpedido.setEnabled(true);
-							btnEditarOS.setEnabled(true);
-
-							btnIniciar.setEnabled(true);
-
-							btnSalvar.setVisible(false);
-							btnCancelar.setVisible(false);
-
-							tfTotalExpedido.setEditable(false);
-							tpMotivo.setEditable(false);
-
-							int id_os = Integer.valueOf(tfOS.getText());
-
-							estagio = estadoOSRN.buscarEstagio(id_os);
-
-							if (estagio == 2) {
-
-								JOptionPane.showMessageDialog(null,
-										"Lembre-se de apertar novamente \no botão Laminação!");
-							}
-
-						}
-
 					}
-
-				} else {
-
-					if (cbEntrega.getSelectedItem().equals("Selecione...")) {
-
-						JOptionPane.showMessageDialog(null, "Selecione se nosso portador fará a entrega!");
-
-					} else if (cbUnidade.getSelectedItem().equals("Selecione...")) {
-
-						JOptionPane.showMessageDialog(null, "Selecione a unidade da empresa!");
-
-					} else {
-
-						OrdemServico os = new OrdemServico();
-						OrdemServicoRN osRN = new OrdemServicoRN();
-
-						ClienteRN clienteRN = new ClienteRN();
-						Cliente cliente = new Cliente();
-
-						os = osRN.mostrarOS(Integer.valueOf(tfOS.getText()));
-
-						boolean entrega = false;
-
-						if (cbEntrega.getSelectedItem().equals("Sim")) {
-
-							entrega = true;
-
-						} else {
-
-							entrega = false;
-
-						}
-
-						cliente.setId_cliente(os.getId_cliente());
-						cliente.setNome(tfClienteOS.getText().toUpperCase());
-						cliente.setVendedor(tfVendedorOS.getText().toUpperCase());
-						cliente.setContato(tfContatoOS.getText().toUpperCase());
-						cliente.setEmail(tfEmailOS.getText().toLowerCase());
-						cliente.setFone1(tfFone1OS.getText());
-						cliente.setFone2(tfFone2OS.getText());
-						cliente.setDetalhes(tpDetalhesOS.getText());
-						cliente.setEntrega(entrega);
-						cliente.setUnidade(String.valueOf(cbUnidade.getSelectedItem()));
-
-						clienteRN.editarcliente(cliente);
-
-						tfTotalExpedido.setEditable(false);
-						tpMotivo.setEditable(false);
-
-						btnSalvar.setVisible(false);
-						btnCancelar.setVisible(false);
-
-						btnEditarOS.setEnabled(true);
-
-						if (TelaLogin.getOperador().getSetor().equals("COMERCIAL")
-								|| TelaLogin.getOperador().getSetor().equals("ADMINISTRATIVO")) {
-
-							btnIniciar.setVisible(false);
-
-						} else {
-
-							btnIniciar.setVisible(true);
-
-						}
-
-						btnTotalExpedido.setEnabled(true);
-
-						tfClienteOS.setEditable(false);
-						tfVendedorOS.setEditable(false);
-						tfContatoOS.setEditable(false);
-						tfEmailOS.setEditable(false);
-						tfFone1OS.setEditable(false);
-						tfFone2OS.setEditable(false);
-						tpDetalhesOS.setEditable(false);
-
-						cbEntrega.setVisible(false);
-						tfEntrega.setVisible(true);
-
-						cbUnidade.setVisible(false);
-						tfUnidade.setVisible(true);
-
-						cliente = clienteRN.mostrarCliente(os.getId_cliente());
-
-						String portador = "";
-
-						if (cliente.isEntrega() == true) {
-
-							portador = "Sim";
-
-						} else {
-
-							portador = "Não";
-
-						}
-
-						tfClienteOS.setText(cliente.getNome());
-						tfVendedorOS.setText(String.valueOf(cliente.getVendedor()));
-						tfContatoOS.setText(cliente.getContato());
-						tfEmailOS.setText(cliente.getEmail());
-						tfFone1OS.setText(cliente.getFone1());
-						tfFone2OS.setText(cliente.getFone2());
-						tpDetalhesOS.setText(cliente.getDetalhes());
-						tfEntrega.setText(portador);
-						tfUnidade.setText(cliente.getUnidade());
-
-						Producao producao = new Producao();
-						ProducaoRN producaoRN = new ProducaoRN();
-
-						producao = producaoRN.pesquisarIDOS(os.getId_os());
-
-						producao.setEmpresa(cliente.getNome());
-						producao.setObservacoes(os.getMotivo());
-
-						producaoRN.atualizarProducao(producao);
-
-					}
-
 				}
 
-			}
-		});
-		btnSalvar.setBounds(387, 465, 115, 35);
-		getContentPane().add(btnSalvar);
-		btnTotalExpedido = new JButton("Total  e Obs");
-		btnTotalExpedido.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/status.png")));
-		btnTotalExpedido.setBounds(15, 465, 115, 35);
-		getContentPane().add(btnTotalExpedido);
-		btnTotalExpedido.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		btnTotalExpedido.setBorder(null);
+			});
 
-		btnEditarOS = new JButton("Editar OS");
-		btnEditarOS.setBounds(139, 465, 115, 35);
-		getContentPane().add(btnEditarOS);
-		btnEditarOS.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/editar_os.png")));
-		btnEditarOS.setBorder(null);
-
-		JButton btnImprimir = new JButton("Imprimir");
-		btnImprimir.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/imprimir.png")));
-		btnImprimir.setBounds(395, 555, 108, 35);
-		getContentPane().add(btnImprimir);
-		btnImprimir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				ImpressaoJpanel imp = new ImpressaoJpanel(pOS);
-
-				PrinterJob job = PrinterJob.getPrinterJob();
-				job.setJobName(" Imprimindo Ordem de Serviço ");
-				job.setPrintable(imp);
-				boolean ok = job.printDialog();
-				if (ok) {
-					try {
-						job.print();
-					} catch (PrinterException ex) {
-						/* The job did not successfully complete */
-						JOptionPane.showMessageDialog(null, "Falha na impressão do documento!");
-					}
-
-				}
-			}
-
-		});
-		btnEditarOS.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				int resposta = JOptionPane.showConfirmDialog(null, "Você deseja editar a OS?", "Editar OS",
-						JOptionPane.OK_CANCEL_OPTION);
-
-				if (resposta == JOptionPane.OK_OPTION) {
-
-					btnSalvar.setVisible(true);
-					btnCancelar.setVisible(true);
-
-					tfClienteOS.setEditable(true);
-					tfVendedorOS.setEditable(true);
-					tfContatoOS.setEditable(true);
-					tfEmailOS.setEditable(true);
-					tfFone1OS.setEditable(true);
-					tfFone2OS.setEditable(true);
-					tpDetalhesOS.setEditable(true);
-
-					cbEntrega.setVisible(true);
-					cbUnidade.setVisible(true);
-					tfEntrega.setVisible(false);
-					tfUnidade.setVisible(false);
-
-					btnTotalExpedido.setEnabled(false);
-					btnEditarOS.setEnabled(false);
-					btnIniciar.setEnabled(false);
-
-				}
-
-			}
-		});
-		btnTotalExpedido.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				int resposta = JOptionPane.showConfirmDialog(null,
-						"Você deseja inserir o total expedido e/ou a observação?", "Total Expedido",
-						JOptionPane.OK_CANCEL_OPTION);
-
-				if (resposta == JOptionPane.OK_OPTION) {
-
-					btnTotalExpedido.setEnabled(false);
-					btnEditarOS.setEnabled(false);
-					btnIniciar.setEnabled(false);
-
-					tfTotalExpedido.setEditable(true);
-					tpMotivo.setEditable(true);
-
-					btnSalvar.setVisible(true);
-					btnCancelar.setVisible(true);
-
-				}
-			}
-					
-		});
-		
-		
 		}
 	}
 
@@ -1130,7 +1115,7 @@ public class TelaOrdemServico extends JDialog {
 			btnIniciar.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/iniciar.png")));
 
 			btnImprimirOS.setVisible(false);
-			
+
 			break;
 
 		case 2:
@@ -1139,7 +1124,7 @@ public class TelaOrdemServico extends JDialog {
 			btnTotalExpedido.setVisible(true);
 			btnIniciar.setVisible(true);
 			btnIniciar.setText("Laminação");
-			
+
 			btnImprimirOS.setVisible(false);
 
 			break;
@@ -1149,329 +1134,8 @@ public class TelaOrdemServico extends JDialog {
 			btnEditarOS.setVisible(false);
 			btnTotalExpedido.setVisible(false);
 			btnIniciar.setVisible(false);
-			
+
 			btnImprimirOS.setVisible(true);
-
-			break;
-
-		case 4:
-
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnIniciar.setVisible(false);
-			
-			btnImprimirOS.setVisible(true);
-
-			break;
-
-		case 5:
-
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnIniciar.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 6:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 7:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		}
-
-	}
-
-	public void mudançaEstagiosOperadorLaminacao(int estagio) {
-
-		switch (estagio) {
-
-		/*case 0:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;*/
-
-		case 1:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 2:
-
-			btnTotalExpedido.setVisible(true);
-			btnEditarOS.setVisible(true);
-			btnIniciar.setVisible(true);
-			btnIniciar.setText("Laminação");
-				
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 3:
-
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnIniciar.setVisible(false);
-			
-			btnImprimirOS.setVisible(true);
-
-			break;
-
-		case 4:
-
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnIniciar.setVisible(false);
-			
-			btnImprimirOS.setVisible(true);
-
-			break;
-
-		case 5:
-
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnIniciar.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 6:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 7:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		}
-
-	}
-
-	public void mudançaEstagiosRecepcionista(int estagio) {
-
-		switch (estagio) {
-
-		/*case 0:
-
-			btnIniciar.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;*/
-
-		case 1:
-
-			btnIniciar.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 2:
-
-			btnIniciar.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 3:
-
-			btnIniciar.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			
-			btnImprimirOS.setVisible(true);
-
-			break;
-
-		case 4:
-
-			btnIniciar.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			
-			btnImprimirOS.setVisible(true);
-
-			break;
-
-		case 5:
-
-			btnIniciar.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 6:
-
-			btnIniciar.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 7:
-
-			btnIniciar.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-			btnEditarOS.setVisible(false);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		}
-
-	}
-
-	public void mudançaEstagiosObservador(int estagio) {
-
-		switch (estagio) {
-
-		/*case 0:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-
-			btnEditarOS.setVisible(true);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;*/
-
-		case 1:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-
-			btnEditarOS.setVisible(true);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 2:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-
-			btnEditarOS.setVisible(true);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 3:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-
-			btnEditarOS.setVisible(true);
-			
-			btnImprimirOS.setVisible(true);
-
-			break;
-
-		case 4:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-
-			btnEditarOS.setVisible(true);
-			
-			btnImprimirOS.setVisible(true);
-
-			break;
-
-		case 5:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-
-			btnEditarOS.setVisible(true);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 6:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-
-			btnEditarOS.setVisible(true);
-			
-			btnImprimirOS.setVisible(false);
-
-			break;
-
-		case 7:
-
-			btnIniciar.setVisible(false);
-			btnEditarOS.setVisible(false);
-			btnTotalExpedido.setVisible(false);
-
-			btnEditarOS.setVisible(true);
-			
-			btnImprimirOS.setVisible(false);
 
 			break;
 
@@ -1485,56 +1149,26 @@ public class TelaOrdemServico extends JDialog {
 
 		{
 
-		/*case "0":
-
-			mensagem = "PEDIDO RECEBIDO";
-
-			break;*/
-
 		case "1":
 
-			mensagem = "IMPRESSÃO";
+			mensagem = "ENTRADA";
 
 			break;
 
 		case "2":
 
-			mensagem = "LAMINAÇÃO / EXPEDIÇÃO";
+			mensagem = "EM PRODUÇÃO";
 
 			break;
-			
+
 		case "3":
 
-			mensagem = "ENTREGAR";
-
-			break;
-
-				
-		case "4":
-
-			mensagem = "ENTREGAR";
-
-			break;
-
-		case "5":
-
-			mensagem = "PEDIDO FINALIZADO";
-
-			break;
-
-		case "6":
-
-			mensagem = "AGUARDANDO O CLIENTE";
-
-			break;
-
-		case "7":
-
-			mensagem = "ORDEM DE SERVIÇO CANCELADA";
+			mensagem = "EXPEDIÇÃO";
 
 			break;
 
 		}
+
 		return mensagem;
 
 	}
@@ -1610,7 +1244,7 @@ public class TelaOrdemServico extends JDialog {
 	public void setTfUnidade(JTextField tfUnidade) {
 		this.tfUnidade = tfUnidade;
 	}
-	
+
 	public JLabel getLblOS() {
 		return lblOS;
 	}

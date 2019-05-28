@@ -700,24 +700,7 @@ public class TelaPesquisarOrdemServico extends JDialog {
 
 							telaOS.mudançaEstagiosOperadorImpressao(estagio);
 
-						} else if (TelaLogin.getOperador().getSetor().equalsIgnoreCase("CRACHÁS / LAMINAÇÃO")) {
-
-							telaOS.mudançaEstagiosOperadorLaminacao(estagio);
-
-						} else if (TelaLogin.getOperador().getAcesso().equalsIgnoreCase("OBSERVADOR")) {
-
-							telaOS.mudançaEstagiosObservador(estagio);
-
-						} else if (TelaLogin.getOperador().getSetor().equalsIgnoreCase("RECEPÇÃO")) {
-
-							telaOS.mudançaEstagiosRecepcionista(estagio);
-
-						}
-
-						if (estagio == 0) {
-
-							estagio = 1;
-						}
+						} 
 
 						try {
 

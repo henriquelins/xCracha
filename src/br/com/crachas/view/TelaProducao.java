@@ -640,7 +640,9 @@ public class TelaProducao extends TelaLogin {
 		final JComboBox<String> cb = cbEmpresa;
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				
 				cb.requestFocusInWindow();
+				
 			}
 		});
 
@@ -748,6 +750,7 @@ public class TelaProducao extends TelaLogin {
 		btnImprimir.setBounds(662, 74, 110, 35);
 		btnImprimir.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		btnImprimir.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
 
 				Relatorio relatorio = new Relatorio();
@@ -2172,7 +2175,7 @@ public class TelaProducao extends TelaLogin {
 						OrdemServicoRN ordemServicoRN = new OrdemServicoRN();
 						OrdemServico ordemServico = new OrdemServico();
 
-						ordemServico.setStatus("IMPRESSÃO");
+						ordemServico.setStatus("ENTRADA");
 						ordemServico.setTotal(tfQuantidade.getText());
 						ordemServico.setDtRecebimento(DataSql);
 
@@ -2544,19 +2547,8 @@ public class TelaProducao extends TelaLogin {
 
 							telaOS.mudançaEstagiosOperadorImpressao(estagio);
 
-						} else if (TelaLogin.getOperador().getSetor().equalsIgnoreCase("CRACHÁS / LAMINAÇÃO")) {
-
-							telaOS.mudançaEstagiosOperadorLaminacao(estagio);
-
-						} else if (TelaLogin.getOperador().getAcesso().equalsIgnoreCase("OBSERVADOR")) {
-
-							telaOS.mudançaEstagiosObservador(estagio);
-
-						} else if (TelaLogin.getOperador().getSetor().equalsIgnoreCase("RECEPÇÃO")) {
-
-							telaOS.mudançaEstagiosRecepcionista(estagio);
-
-						}
+						} 
+						
 
 						if (estagio == 0) {
 
