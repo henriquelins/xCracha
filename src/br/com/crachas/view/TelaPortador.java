@@ -1,7 +1,6 @@
 package br.com.crachas.view;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -18,8 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
-
-import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import br.com.crachas.controller.Portador;
 import br.com.crachas.controller.PortadorRN;
@@ -179,8 +176,7 @@ public class TelaPortador extends JDialog {
 
 			}
 		});
-		getContentPane()
-				.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { tfPortador, tfRgCpf, btnSalvar }));
+		
 	}
 
 	public int getId_os() {
