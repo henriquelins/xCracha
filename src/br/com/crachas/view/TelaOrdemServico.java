@@ -516,7 +516,7 @@ public class TelaOrdemServico extends JDialog {
 				pOS.add(btnImprimirOS);
 			}
 
-			btnIniciar = new JButton("Iniciar");
+			btnIniciar = new JButton("Avan\u00E7ar");
 			btnIniciar.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/iniciar.png")));
 			btnIniciar.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 
@@ -529,20 +529,21 @@ public class TelaOrdemServico extends JDialog {
 							"Estágio da Produção", JOptionPane.OK_CANCEL_OPTION);
 
 					if (resposta == JOptionPane.OK_OPTION) {
-
+						
+											
 						int id_os = Integer.valueOf(tfOS.getText());
 
 						estagio = estadoOSRN.buscarEstagio(id_os);
 
 						if (estagio == 1) {
 
-							int proximoEstado = 0;
+							estagio = estagio + 1;
 
 							Date hoje = new Date(System.currentTimeMillis());
 							Time hora = new Time(System.currentTimeMillis());
 
 							estadoOS.setId_os(id_os);
-							estadoOS.setEstagio(proximoEstado);
+							estadoOS.setEstagio(estagio);
 							estadoOS.setDataInicial(hoje);
 							estadoOS.setHoraInicial(hora);
 							estadoOS.setOperador(String.valueOf(TelaLogin.getOperador().getNome()));
@@ -568,7 +569,7 @@ public class TelaOrdemServico extends JDialog {
 						} else if (estagio == 2 && tfTotalExpedido.getText().equals("")) {
 
 							JOptionPane.showMessageDialog(null,
-									"Preencha primeiro o Total Expedido\n e/ou a observação!");
+									"Preencha primeiro o Total Expedido\n se necessário acrescente uma observação!", "Estágio da Produção", JOptionPane.INFORMATION_MESSAGE );
 
 							btnTotalExpedido.setEnabled(false);
 							btnEditarOS.setEnabled(false);
@@ -579,6 +580,8 @@ public class TelaOrdemServico extends JDialog {
 
 							btnSalvar.setVisible(true);
 							btnCancelar.setVisible(true);
+							
+							estagio = estagio + 1;
 
 						} else if (estagio == 3) {
 
@@ -630,7 +633,9 @@ public class TelaOrdemServico extends JDialog {
 
 					} else {
 						
-						//
+						JOptionPane.showMessageDialog(null,
+								"Erro ao avançar os dados", "Estágio da Produção", JOptionPane.INFORMATION_MESSAGE );
+
 						
 					}
 
@@ -1111,7 +1116,7 @@ public class TelaOrdemServico extends JDialog {
 			btnEditarOS.setVisible(true);
 			btnTotalExpedido.setVisible(true);
 			btnIniciar.setVisible(true);
-			btnIniciar.setText("Impressão");
+			btnIniciar.setText("Entrada");
 			btnIniciar.setIcon(new ImageIcon(TelaOrdemServico.class.getResource("/br/com/crachas/image/iniciar.png")));
 
 			btnImprimirOS.setVisible(false);
@@ -1123,7 +1128,7 @@ public class TelaOrdemServico extends JDialog {
 			btnEditarOS.setVisible(true);
 			btnTotalExpedido.setVisible(true);
 			btnIniciar.setVisible(true);
-			btnIniciar.setText("Laminação");
+			btnIniciar.setText("Em produção");
 
 			btnImprimirOS.setVisible(false);
 

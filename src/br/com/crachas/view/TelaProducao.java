@@ -2087,7 +2087,8 @@ public class TelaProducao extends TelaLogin {
 
 				} else if (dcDataEntrada.getDate().after(hoje)) {
 
-					JOptionPane.showMessageDialog(null, "A data de entrada não pode ser maior que o dia atual!");
+					JOptionPane.showMessageDialog(null, "A data de entrada não pode ser maior que o dia atual!", "Salvar Planilha", JOptionPane.INFORMATION_MESSAGE);
+
 
 					dcDataEntrada.setDate(null);
 
@@ -2105,7 +2106,8 @@ public class TelaProducao extends TelaLogin {
 
 					if (contem == false) {
 
-						JOptionPane.showMessageDialog(null, "Cliente não cadastrado, cadastre-o primeiro!");
+						JOptionPane.showMessageDialog(null, "Cliente não cadastrado, cadastre-o primeiro!", "Salvar Planilha", JOptionPane.INFORMATION_MESSAGE);
+
 
 						cbEmpresa.setSelectedItem(null);
 						cbTipo.setSelectedItem(null);
@@ -2549,12 +2551,6 @@ public class TelaProducao extends TelaLogin {
 
 						} 
 						
-
-						if (estagio == 0) {
-
-							estagio = 1;
-
-						}
 
 						try {
 
